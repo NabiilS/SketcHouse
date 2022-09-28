@@ -10,6 +10,7 @@ import { Character } from '../characters/Character';
 import { FollowPath } from '../characters/character_ai/FollowPath';
 import { LoadingManager } from '../core/LoadingManager';
 import { IWorldEntity } from '../interfaces/IWorldEntity';
+import { Lifter } from '../vehicles/Lifter';
 
 export class VehicleSpawnPoint implements ISpawnPoint
 {
@@ -26,8 +27,10 @@ export class VehicleSpawnPoint implements ISpawnPoint
 
 	public spawn(loadingManager: LoadingManager, world: World): void
 	{
+		// loadingManager.loadGLTF('build/assets/lifter.glb', (model: any) =>
 		loadingManager.loadGLTF('build/assets/' + this.type + '.glb', (model: any) =>
 		{
+			
 			let vehicle: Vehicle = this.getNewVehicleByType(model, this.type);
 			vehicle.spawnPoint = this.object;
 
@@ -91,6 +94,7 @@ export class VehicleSpawnPoint implements ISpawnPoint
 		switch (type)
 		{
 			case 'car': return new Car(model);
+			case 'lifter': return new Lifter(model);
 			case 'heli': return new Helicopter(model);
 			case 'airplane': return new Airplane(model);
 		}

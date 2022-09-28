@@ -39,11 +39,13 @@ export abstract class ExitingStateBase extends CharacterStateBase
 
 	public detachCharacterFromVehicle(): void
 	{
+		
 		this.character.controlledObject = undefined;
 		this.character.resetOrientation();
 		this.character.world.graphicsWorld.attach(this.character);
 		this.character.resetVelocity();
 		this.character.setPhysicsEnabled(true);
+		console.log("Detatching from vehicule")
 		this.character.setPosition(this.character.position.x, this.character.position.y, this.character.position.z);
 		this.character.inputReceiverUpdate(0);
 		this.character.characterCapsule.body.velocity.copy((this.vehicle as unknown as Vehicle).rayCastVehicle.chassisBody.velocity);

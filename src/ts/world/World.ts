@@ -167,18 +167,19 @@ export class World
 					footer: '<a href="https://github.com/swift502/Sketchbook" target="_blank">Page Github</a><a href="https://discord.gg/fGuEqCe" target="_blank">Discord de Sketchbook</a>',
 					confirmButtonText: 'Okay',
 					buttonsStyling: false,
-					onClose: () => {
-						Swal.fire({
-							icon: 'success',
-							title: 'Vous avez fermé le premier pop up!',
-							text: 'Il fallait avoir addblock...',
-							confirmButtonText: "d'accord...",
-							onClose: () => {
-								UIManager.setUserInterfaceVisible(true);
-							}
-						})
+					 onClose: () => {
+						UIManager.setUserInterfaceVisible(true);
+					// 	Swal.fire({
+					// 		icon: 'success',
+					// 		title: 'Vous avez fermé le premier pop up!',
+					// 		text: 'Il fallait avoir addblock...',
+					// 		confirmButtonText: "d'accord...",
+					// 		onClose: () => {
+					// 			UIManager.setUserInterfaceVisible(true);
+					// 		}
+					// 	})
 						
-					}
+				 }
 				});
 			};
 			loadingManager.loadGLTF(worldScenePath, (gltf) =>
@@ -404,6 +405,7 @@ export class World
 		let defaultScenarioID: string;
 		for (const scenario of this.scenarios) {
 			if (scenario.default) {
+				console.log("starting first scenario")
 				defaultScenarioID = scenario.id;
 				break;
 			}

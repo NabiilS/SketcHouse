@@ -24,11 +24,13 @@ export class Scenario
 		this.rootNode = root;
 		this.world = world;
 		this.id = root.name;
-
+		
 		// Scenario
 		if (root.userData.hasOwnProperty('name')) 
 		{
+		
 			this.name = root.userData.name;
+			// console.log("this.name of root = ", this.name)
 		}
 		if (root.userData.hasOwnProperty('default') && root.userData.default === 'true') 
 		{
@@ -59,13 +61,17 @@ export class Scenario
 
 		// Find all scenario spawns and enitites
 		root.traverse((child) => {
+
+			//console.log("child type: ", child.userData.type)
 			if (child.hasOwnProperty('userData') && child.userData.hasOwnProperty('data'))
 			{
 				if (child.userData.data === 'spawn')
 				{
-					if (child.userData.type === 'car' || child.userData.type === 'airplane' || child.userData.type === 'heli')
+					console.log("Les user data type = ", child.userData.type)
+					if (child.userData.type === 'car' || child.userData.type === 'airplane' || child.userData.type === 'heli' || child.userData.type === 'lifter')
 					{
 						let sp = new VehicleSpawnPoint(child);
+						
 
 						if (child.userData.hasOwnProperty('type')) 
 						{
@@ -105,8 +111,11 @@ export class Scenario
 
 	public launch(loadingManager: LoadingManager, world: World): void
 	{
+		//console.log("LAUNCHING...")
 		this.spawnPoints.forEach((sp) => {
 			sp.spawn(loadingManager, world);
+			//console.log("foreach spawnpoints in scenario ", sp)
+			
 		});
 
 		if (!this.spawnAlways)
