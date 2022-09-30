@@ -343,6 +343,7 @@ export class World
 	public loadScene(loadingManager: LoadingManager, gltf: any): void
 	{
 		gltf.scene.traverse((child) => {
+			console.log("les child:",child)
 			if (child.hasOwnProperty('userData'))
 			{
 				if (child.type === 'Mesh')
@@ -365,6 +366,7 @@ export class World
 							// Convex doesn't work! Stick to boxes!
 							if (child.userData.type === 'box')
 							{
+								//console.log("setting collision of ", child)
 								let phys = new BoxCollider({size: new THREE.Vector3(child.scale.x, child.scale.y, child.scale.z)});
 								phys.body.position.copy(Utils.cannonVector(child.position));
 								phys.body.quaternion.copy(Utils.cannonQuat(child.quaternion));

@@ -11,6 +11,7 @@ import { FollowPath } from '../characters/character_ai/FollowPath';
 import { LoadingManager } from '../core/LoadingManager';
 import { IWorldEntity } from '../interfaces/IWorldEntity';
 import { Lifter } from '../vehicles/Lifter';
+import { Tank } from '../vehicles/Tank';
 
 export class VehicleSpawnPoint implements ISpawnPoint
 {
@@ -95,6 +96,7 @@ export class VehicleSpawnPoint implements ISpawnPoint
 		{
 			case 'car': return new Car(model);
 			case 'lifter': return new Lifter(model);
+			case 'tank': return new Tank(model);
 			case 'heli': return new Helicopter(model);
 			case 'airplane': return new Airplane(model);
 		}

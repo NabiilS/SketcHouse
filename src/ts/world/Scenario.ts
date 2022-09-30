@@ -68,7 +68,7 @@ export class Scenario
 				if (child.userData.data === 'spawn')
 				{
 					console.log("Les user data type = ", child.userData.type)
-					if (child.userData.type === 'car' || child.userData.type === 'airplane' || child.userData.type === 'heli' || child.userData.type === 'lifter')
+					if (child.userData.type === 'car' || child.userData.type === 'airplane' || child.userData.type === 'heli' || child.userData.type === 'lifter' || child.userData.type === 'tank')
 					{
 						let sp = new VehicleSpawnPoint(child);
 						

@@ -5,5 +5,6 @@ export declare enum EntityType {
     Helicopter = 3,
     Decoration = 4,
     System = 5,
-    Lifter = 6
+    Lifter = 6,
+    Tank = 7
 }

@@ -5,5 +5,6 @@ export enum EntityType {
 	Helicopter,
 	Decoration,
 	System,
-	Lifter // Added 
+	Lifter, // Added 
+	Tank // Added 
 }
